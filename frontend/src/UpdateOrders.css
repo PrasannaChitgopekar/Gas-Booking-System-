@@ -1,0 +1,16 @@
+.mainSignInComponent{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .subSignInBox{
+    width: 30vw;
+    /* height: 40vh; */
+    padding: 3vh 3vw;
+    background-color:rgb(238, 238, 238);
+    text-align: center;
+    background: rgba(229, 229, 229, 0.9)
+  }
