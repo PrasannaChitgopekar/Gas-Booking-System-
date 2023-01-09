@@ -37,6 +37,8 @@ function Login() {
         if(response.data.loginStatus === "passwordMatched"){
           auth.Logincustomer_id(response.data.customer_id);
           auth.LoginUname(response.data.name);
+          auth.Loginuser_address(response.data.phone_no);
+          auth.Loginuser_phone(response.data.address);
           navigate('/',{replace:true})
         }
         // console.log(response)
@@ -50,7 +52,9 @@ function Login() {
       setAdminCredentials({ ...adminCredentials, [e.target.name]: e.target.value });
   }
 
-  return (
+  return (<>
+  <br/>
+    <h1 style={{textAlign:"center"}}> Gas Booking Management System </h1>
     <div style={{display:"flex",justifyContent:"center",alignItems:"center",margin:"3vh 0"}}>
 {/* <div className="background"> */}
     <div className="login ,my-3" style={{alignItems: "center"}}>
@@ -83,6 +87,7 @@ function Login() {
             </div>
             {/* </div> */}
             </div>
+            </>
   )
 }
 

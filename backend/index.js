@@ -34,7 +34,7 @@ app.post('/adminsignup',(req,res)=>{  //this for signup
     // console.log(req.body);
     // let name = String(req.body.name)
     console.log(req.body);
-    let myQuery = `INSERT INTO administrator(admin_name, admin_password , admin_email) VALUES("${String(req.body.admin_name)}","${String(req.body.admin_password)}","${String(req.body.admin_email)}")`
+    let myQuery = `INSERT INTO administrator(admin_name, admin_password , admin_email) VALUES("${String(req.body.admin_name)}","${String(req.body.admin_password)}","${String(req.body.admin_email)}");`
     // console.log(myQuery);
     db.query(myQuery,(err,result)=>{
         if(err) { console.log(err) }
@@ -60,7 +60,9 @@ app.post("/userlogin",(req,res)=>{
                   {
                       loginStatus : 'passwordMatched',
                       customer_id : result[0].customer_id,
-                      name : result[0].name
+                      name : result[0].name,
+                      phone_no : result[0].phone_no,
+                      address : result[0].address,
                   }
               )
           }else{
@@ -100,7 +102,7 @@ app.post("/adminlogin",(req,res)=>{
 // inserting order or place order
 
 app.post('/orders',(req,res)=>{
-    let myQuery = `insert into orders(cst_id ,order_date ,delivery_address ,phone_no_optional,admin_id) values("${req.body.cst_id}","${req.body.order_date}","${req.body.delivery_address}","${req.body.phone_no_optional}","${req.body.admin_id}")`
+    let myQuery = `insert into orders(cst_id ,order_date ,delivery_address ,phone_no_optional) values("${req.body.cst_id}","${req.body.order_date}","${req.body.delivery_address}","${req.body.phone_no_optional}")`
     console.log(myQuery);
     db.query(myQuery,(err,result)=>{
         if(err) console.log(err);
@@ -298,6 +300,41 @@ app.post("/updateuser",(req,res)=>{
         if(err) throw err;
         res.send("updated successfully");
     })
+})
+
+//delete note
+app.post("/deletenote",(req,res)=>{
+    let customer_id = req.body.cst_id;
+    let delivery_id = req.body.delivery_id;
+    let myQuery = `delete from delivary_note where cst_id="${customer_id}" and delivary_id="${delivery_id}";`
+    db.query(myQuery,(err,reslut)=>{
+        if(err) throw err;
+        res.send("deleted");
+    })
+})
+
+//delete complaints
+app.post("/deletecomplaint",(req,res)=>{
+    let customer_id = req.body.cst_id;
+    let complaint_no = req.body.complaint_no;
+    let myQuery = `delete from complaints where cst_id="${customer_id}" and complaint_no="${complaint_no}";`
+    db.query(myQuery,(err,reslut)=>{
+        if(err) throw err;
+        res.send("deleted");
+    })
+})
+
+
+//number of orders
+app.post('/norder',(req,res)=>{
+    let customer_id = req.body.cst_id;
+    let myQuery = `select count(*) as n from orders where cst_id = ${customer_id};`
+    // let an = `select name from customer where customer_id = ${customer_id}`
+
+    db.query(myQuery,(err,result)=>{
+        // console.log(result);
+        res.send(result)
+    });
 })
 
 

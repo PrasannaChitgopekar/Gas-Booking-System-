@@ -55,6 +55,8 @@ function Booking() {
               <h1>Gas Booking System</h1><br/>
               <p>Logged in Customer Id is : {auth.customer_id}</p>
                   <p>Customer Name is : {auth.uname}</p>
+                  <p>Customer Name is : {auth.number}</p>
+                  <p>Customer Name is : {auth.address}</p>
               </div>
           </div>
 
@@ -63,7 +65,7 @@ function Booking() {
             <form onSubmit={handleSubmitBooking}> 
             <h1>Make Order</h1>
             <input type="date" name="date" value={credentials.date} onChange={onChange} placeholder="Enter date" required ></input>
-            <br/><input type="phone_no_optional" name="phone_no_optional" value={credentials.phone_no_optional} onChange={onChange}   placeholder="Enter phone_no_optional" ></input><br/>
+            <br/><input type="phone_no_optional" name="phone_no_optional" value={credentials.phone_no_optional} onChange={onChange}   placeholder="Enter phone_no" ></input><br/>
             <input type="text" name="address" value={credentials.address} onChange={onChange} placeholder="Enter address" required ></input>
             <button className="button" type="submit" style={{padding: "7px 100px",opacity:"0.9"}}  >submit</button>
             

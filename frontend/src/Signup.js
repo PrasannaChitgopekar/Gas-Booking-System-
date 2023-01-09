@@ -71,7 +71,6 @@ function Signup() {
       {/* <button className="button" style={{padding: "8px 150px",opacity:"0.9"}} onClick={()=>{navigate("/login",{replace:true})}}>Login</button> */}
       </form>
 </div>
-
 <div className="register" >
     
 <h1>Customer Signup </h1>
@@ -83,7 +82,8 @@ function Signup() {
 <input type="address" name="address" required value={userCredentials.address } placeholder="enter your address" onChange={onChange} minLength={5}  ></input>
 <button className="button" style={{padding: "8px 150px",opacity:"0.9"}}  type = "submit">Register</button>
 {/* <div>or</div> */}
-{/* <button className="button" style={{padding: "8px 150px",opacity:"0.9"}} onClick={()=>{navigate("/login",{replace:true})}}>Login</button> */}
+{/* <butto
+n className="button" style={{padding: "8px 150px",opacity:"0.9"}} onClick={()=>{navigate("/login",{replace:true})}}>Login</button> */}
 </form>
 </div>
 </div>

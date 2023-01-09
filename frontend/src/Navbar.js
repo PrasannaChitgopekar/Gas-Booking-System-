@@ -23,6 +23,7 @@ function Navbar() {
       axios.post("http://localhost:3001/deleteaccount",{
         cst_id : auth.customer_id,
       }).then(responce => {
+        alert(responce.data);
         navigate("/login",{replace:true});
       })
     }

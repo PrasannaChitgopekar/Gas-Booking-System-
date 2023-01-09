@@ -4,6 +4,7 @@ import Paper from '@mui/material/Paper';
 import axios from 'axios';
 import './Complaints.css';
 import { useAuth } from './context/LoginContext';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 
 
@@ -39,6 +40,8 @@ function DeliveryNote() {
     })
   }
 
+  
+
   const onChange = (e)=>{
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
 }
@@ -69,6 +72,7 @@ function DeliveryNote() {
                         <th style={{border: "1px solid black",padding:"2vh 2vw"}}>order_id</th>
                         <th style={{border: "1px solid black",padding:"2vh 2vw"}}>cst_id</th>
                         <th style={{border: "1px solid black",padding:"2vh 2vw"}}>delivery_id</th>
+                        <th style={{border: "1px solid black",padding:"2vh 2vw"}}>delete</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -76,6 +80,16 @@ function DeliveryNote() {
                         <td style={{border: "1px solid black",padding:"2vh 2vw"}}>{delivery.ord_id}</td>
                         <td style={{border: "1px solid black",padding:"2vh 2vw"}}>{delivery.cst_id}</td>
                         <td style={{border: "1px solid black",padding:"2vh 2vw"}}>{delivery.delivary_id}</td>
+                        <td style={{border: "1px solid black",padding:"2vh 2vw",cursor :"pointer"}}><DeleteIcon color="error" onClick={ (e)=>{
+                              e.preventDefault();
+                              axios.post("http://localhost:3001/deletenote",{
+                                cst_id : auth.customer_id,
+                                delivery_id : delivery.delivary_id
+                              }).then(responce=>{
+                                  alert(responce.data);
+                              })
+                          }
+                        }/></td>
                         </tr>
                     </tbody>
                   </table>

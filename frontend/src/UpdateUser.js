@@ -3,12 +3,15 @@ import './UpdateOrders.css'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import axios from 'axios';
-import { useAuth } from './context/LoginContext'
+import { useAuth } from './context/LoginContext';
+import { Navigate ,useNavigate} from 'react-router-dom';
+
 
 function UpdateUser(props) {
 
     const [credentials,setCredentials] = useState({name:"",phone_no:"",address:"",password:""})
     const auth = useAuth();
+    const navigate=useNavigate();
     const onChange = (e)=>{
         setCredentials({ ...credentials, [e.target.name]: e.target.value });
       }
@@ -24,6 +27,7 @@ function UpdateUser(props) {
         }).then(responce => {
             alert(responce.data);
             setCredentials({name:'',phone_no:'',address:'',password:''})
+            navigate('/login',{replace:true})
         })
       }
 

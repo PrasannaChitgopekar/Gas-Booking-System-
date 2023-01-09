@@ -1,5 +1,9 @@
-//npm install @mui/icons-material
-//npm install @mui/material @emotion/react @emotion/styled  // ---->after installing these two we can use any react style in "mui"
+//npm install @mui/icons-material - 4
+//npm install @mui/material @emotion/react @emotion/styled  -5  // ---->after installing these two we can use any react style in "mui"
+//npm init -1
+//npm i react-router-dom - 2
+//npm i cors -3
+//npm install -- in frontend
 
 
 import './App.css';
